@@ -31,6 +31,16 @@ namespace ManagerLayer.Services
             return user.Login(login);
         }
 
+        public ForgotPasswordModel ForgotPassword(string email)
+        {
+            return user.ForgotPassword(email);
+        }
+
+        public bool Reset(string email, ResetPasswordModel model)
+        {
+            return user.Reset(email, model);
+        }
+
         public bool TestEmail(string email)
         {
             var checkMail = this.context.Users.FirstOrDefault(x => x.Email == email);
