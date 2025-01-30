@@ -1,7 +1,12 @@
-﻿using CommonLayer.Models;
+﻿using System.Threading.Tasks;
+using System;
+using CommonLayer.Models;
 using ManagerLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
 using RepositoryLayer.Entity;
+using MassTransit;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace FundooNotesApp.Controllers
 {
@@ -10,10 +15,12 @@ namespace FundooNotesApp.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserManager manager;
+        private readonly IBus bus;
 
-        public UsersController(IUserManager manager)
+        public UsersController(IUserManager manager, IBus bus)
         {
             this.manager = manager;
+            this.bus = bus;
         }
         [HttpPost]
         [Route("Reg")]
@@ -50,6 +57,53 @@ namespace FundooNotesApp.Controllers
             }
             return BadRequest(new ResponseModel<string> { Success= false, Message="login failed", Data=response });
         }
-           
+
+
+        [HttpGet("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            try
+            {
+                ForgotPasswordModel forgotPasswordModel = manager.ForgotPassword(email);
+                Send send = new Send();
+                send.SendMail(forgotPasswordModel.Email, forgotPasswordModel.Token);
+                Uri uri = new Uri("rabbitmq://localhost/FundooNotesEmailQueue");
+                var endPoint = await bus.GetSendEndpoint(uri);
+                await endPoint.Send(forgotPasswordModel);
+                if (endPoint != null)
+                {
+                    return Ok(new ResponseModel<string> { Success = true, Message = "Mail sent successfully", Data = endPoint.ToString() });
+                }
+                else
+                {
+                    return BadRequest(new ResponseModel<string> { Success = false, Message = "Please provide valid email" });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost("ResetPassword")]
+        public IActionResult Reset(ResetPasswordModel model)
+        {
+            string data = User.Claims.FirstOrDefault(c => c.Type == "Email").Value;
+            var response = manager.Reset(data, model);
+            if (response != false)
+            {
+                return Ok(new ResponseModel<string> { Success = true, Message = "Password updated", Data = response.ToString() });
+
+
+            }
+            else
+            {
+                return BadRequest(new ResponseModel<string> { Success = false, Message = "password not updated" });
+            }
+        }
+
     }
 }

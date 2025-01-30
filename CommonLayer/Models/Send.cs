@@ -12,7 +12,7 @@ namespace CommonLayer.Models
         {
             string FromEmail = "raichurprabha1@gmail.com";
             MailMessage message = new MailMessage(FromEmail, ToEmail);
-            string MailBody = "Token for the reset password: " + Token;
+            string MailBody = "Token for the reset password:" + Token;
             message.Subject = "Token generated for resetting password";
             message.Body = MailBody.ToString();
             message.BodyEncoding = Encoding.UTF8;
