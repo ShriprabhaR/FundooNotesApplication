@@ -40,6 +40,10 @@ namespace FundooNotesApp
             services.AddDbContext<FunDooDBContext>(a => a.UseSqlServer(Configuration["ConnectionStrings:DBConnection"]));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserManager, UserManager>();
+            services.AddTransient<INotesRepository, NoteRepository>();
+            services.AddTransient<INoteManager, NoteManager>();
+
+
             services.AddSwaggerGen(
                 c => {
                     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
