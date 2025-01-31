@@ -60,6 +60,8 @@ C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\F
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.AssemblyInfo.cs
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.MvcApplicationPartsAssemblyInfo.cs
+<<<<<<< HEAD
+=======
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.sourcelink.json
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.RazorTargetAssemblyInfo.cache
@@ -73,3 +75,4 @@ C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\F
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.dll
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.pdb
 C:\Users\HP\source\repos\FundooNotesApp\FundooNotesApp\obj\Debug\netcoreapp3.1\FundooNotesApp.genruntimeconfig.cache
+>>>>>>> main

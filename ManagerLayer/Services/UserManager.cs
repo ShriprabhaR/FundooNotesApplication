@@ -30,7 +30,6 @@ namespace ManagerLayer.Services
         {
             return user.Login(login);
         }
-
         public ForgotPasswordModel ForgotPassword(string email)
         {
             return user.ForgotPassword(email);
