@@ -30,7 +30,6 @@ namespace ManagerLayer.Services
         {
             return user.Login(login);
         }
-
         public ForgotPasswordModel ForgotPassword(string email)
         {
             return user.ForgotPassword(email);
@@ -40,7 +39,6 @@ namespace ManagerLayer.Services
         {
             return user.Reset(email, model);
         }
-
         public bool TestEmail(string email)
         {
             var checkMail = this.context.Users.FirstOrDefault(x => x.Email == email);

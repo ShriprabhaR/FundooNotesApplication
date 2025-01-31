@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using CommonLayer.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RepositoryLayer.Context;
@@ -80,7 +77,7 @@ namespace RepositoryLayer.Services
             var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
                 configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -112,14 +109,14 @@ namespace RepositoryLayer.Services
             {
                 if (model.Password == model.ConfirmPassword)
                 {
-                    user.Password=EncodePassword(model.ConfirmPassword);
+                    user.Password = EncodePassword(model.ConfirmPassword);
                     context.Users.Update(user);
                     context.SaveChanges();
                     return true;
                 }
                 else
                 {
-                    throw new Exception("New password and confirm password do not match.");
+                    return false;
                 }
             }
             else
@@ -128,9 +125,6 @@ namespace RepositoryLayer.Services
             }
 
         }
-        
 
     }
-
-    
 }

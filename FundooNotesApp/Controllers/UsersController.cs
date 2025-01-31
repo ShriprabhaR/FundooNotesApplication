@@ -1,10 +1,12 @@
-﻿using System;
 using System.Threading.Tasks;
+using System;
 using CommonLayer.Models;
 using ManagerLayer.Interface;
-using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using RepositoryLayer.Entity;
+using MassTransit;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace FundooNotesApp.Controllers
 {
@@ -20,7 +22,6 @@ namespace FundooNotesApp.Controllers
             this.manager = manager;
             this.bus = bus;
         }
-
         [HttpPost]
         [Route("Reg")]
 
@@ -57,6 +58,7 @@ namespace FundooNotesApp.Controllers
             return BadRequest(new ResponseModel<string> { Success= false, Message="login failed", Data=response });
         }
 
+
         [HttpGet("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
@@ -80,17 +82,20 @@ namespace FundooNotesApp.Controllers
             catch (Exception ex)
             {
                 throw ex;
-                
+
             }
         }
 
+
+        [Authorize]
         [HttpPost("ResetPassword")]
-        public IActionResult Reset(string email, ResetPasswordModel model)
+        public IActionResult Reset(ResetPasswordModel model)
         {
-            var response = manager.Reset(email, model);
-            if(response != false)
+            string data = User.Claims.FirstOrDefault(c => c.Type == "Email").Value;
+            var response = manager.Reset(data, model);
+            if (response != false)
             {
-                return Ok(new ResponseModel<string> { Success=true, Message="Password updated", Data = response.ToString() });  
+                return Ok(new ResponseModel<string> { Success = true, Message = "Password updated", Data = response.ToString() });
 
 
             }
