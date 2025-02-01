@@ -74,5 +74,85 @@ namespace RepositoryLayer.Services
             return true;
         }
 
+        public bool IsPinOrUnpin(int UserId, int NotesId)
+        {
+            var check = context.Notes.FirstOrDefault(x => x.UserId == UserId && x.NotesId == NotesId);
+
+            if (check != null)
+            {
+                if (check.IsPin == true)
+                {
+                    check.IsPin = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    check.IsPin = true;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public bool IsArchiveOrUnArchive(int UserId, int NotesId)
+        {
+            var check = context.Notes.FirstOrDefault(x => x.UserId == UserId && x.NotesId == NotesId);
+
+            if (check != null)
+            {
+                if (check.IsArchive == true)
+                {
+                    check.IsArchive = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    check.IsArchive = true;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool IsTrashOrUnTrash(int UserId, int NotesId)
+        {
+            var check = context.Notes.FirstOrDefault(x => x.UserId == UserId && x.NotesId == NotesId);
+
+            if (check != null)
+            {
+                if (check.IsTrash == true)
+                {
+                    check.IsTrash = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    check.IsTrash = true;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
+
     }
 }

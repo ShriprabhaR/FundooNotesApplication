@@ -40,5 +40,18 @@ namespace ManagerLayer.Services
             return note.DeleteNotes( NotesId, UserId);
         }
 
+        public bool IsPinOrUnpin(int UserId, int NotesId)
+        {
+            return note.IsPinOrUnpin(UserId, NotesId);
+        }
+
+        public bool IsArchiveOrUnArchive(int UserId, int NotesId)
+        {
+            return note.IsArchiveOrUnArchive(UserId, NotesId);
+        }
+        public bool IsTrashOrUnTrash(int UserId, int NotesId)
+        {
+            return note.IsTrashOrUnTrash(UserId, NotesId);
+        }
     }
 }

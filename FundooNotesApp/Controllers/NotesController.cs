@@ -148,5 +148,59 @@ namespace FundooNotesApp.Controllers
 
 
 
+        [HttpPut("IsPinUnpin")]
+        public IActionResult IsPinOrUnpin(int NotesId)
+        {
+            string data = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
+            var response = manager.IsPinOrUnpin(Convert.ToInt32(data), NotesId);
+
+            if (response == true)
+            {
+                return Ok(new ResponseModel<bool> { Success = true, Message = "Pin/Unpin Updated", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResponseModel<bool> { Success = false, Message = "Pin/Unpin Not Updated" });
+            }
+
+        }
+
+        [HttpPut("IsArchiveOrUnArchive")]
+        public IActionResult IsArchiveOrUnArchive(int NotesId)
+        {
+            string data = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
+            var response = manager.IsArchiveOrUnArchive(Convert.ToInt32(data), NotesId);
+
+            if (response == true)
+            {
+                return Ok(new ResponseModel<bool> { Success = true, Message = "Archive/UnArchive Updated", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResponseModel<bool> { Success = false, Message = "Archive/UnArchive Not Updated" });
+            }
+
+        }
+
+        [HttpPut("IsTrashOrUnTrash")]
+        public IActionResult IsTrashOrUnTrash(int NotesId)
+        {
+            string data = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
+            var response = manager.IsTrashOrUnTrash(Convert.ToInt32(data), NotesId);
+
+            if (response == true)
+            {
+                return Ok(new ResponseModel<bool> { Success = true, Message = "Trash/UnTrash Updated", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResponseModel<bool> { Success = false, Message = "Trash/UnTrash Not Updated" });
+            }
+
+        }
+
+
+
+
     }
 }
