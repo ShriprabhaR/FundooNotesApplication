@@ -1,0 +1,17 @@
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.deps.json
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.json
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.dev.json
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfo.cs
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.sourcelink.json
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\Reposito.A0A61804.Up2Date
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\Users\HP\source\repos\FundooNotesApp\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.genruntimeconfig.cache
