@@ -194,7 +194,7 @@ namespace FundooNotesApp.Controllers
 
             var usersDesc = context.Users.OrderByDescending(x => x.FirstName).ToList();
 
-            if (usersAsc != null)
+            if (usersAsc != null  && usersDesc != null)
             {
                 return Ok(new ResponseModel<object> { Success = true, Message = "Users ordered by name", Data = new { usersAsc, usersDesc } });
 
