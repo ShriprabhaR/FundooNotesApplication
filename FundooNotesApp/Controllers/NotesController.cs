@@ -7,7 +7,9 @@ using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
+using RepositoryLayer.Migrations;
 
 namespace FundooNotesApp.Controllers
 {
@@ -16,7 +18,7 @@ namespace FundooNotesApp.Controllers
     public class NotesController : ControllerBase
     {
         private readonly INoteManager manager;
-        //private readonly IUserManager userManager;
+        private readonly FunDooDBContext context;
 
         public NotesController(INoteManager manager)
         {
@@ -105,6 +107,42 @@ namespace FundooNotesApp.Controllers
             else
             {
                 return NotFound(new ResponseModel<bool> { Success = false, Message = "Note not found or unauthorized" });
+            }
+        }
+
+
+
+
+        //Fetch Notes using title and description
+        [HttpGet("GetNotes")]
+        public IActionResult GetNotes(string title, string description)
+        {
+            var notes = context.Notes.Select(x => x).Where(x => x.Title == title && x.Description == description).ToList();
+
+            if(notes != null)
+            {
+                return Ok(new ResponseModel<List<Notes>>{Success = true,Message = "Notes retrieved successfully",Data = notes});
+
+            }
+            else 
+            {
+                return BadRequest(new ResponseModel<List<Notes>>{Success = false,Message = "No notes found"});
+            }
+        }
+
+        //Return Count of notes a user has
+        [HttpGet("CountNotes")]
+        public IActionResult GetUserNotesCount(int userId)
+        {
+            var notesCount = context.Notes.Where(x => x.UserId == userId).Count();
+
+            if (notesCount > 0)
+            {
+                return Ok(new ResponseModel<int>{Success = true,Message = "Notes count retrieved successfully",Data = notesCount});
+            }
+            else
+            {
+                return BadRequest(new ResponseModel<int> { Success = false, Message = "Notes not found" });
             }
         }
 
