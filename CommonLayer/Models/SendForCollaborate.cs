@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Mail;
+using System.Net;
 using System.Text;
 
 namespace CommonLayer.Models
 {
-    public class Send
+    public class SendForCollaborate
     {
-        public string SendMail(string ToEmail, string Token)
+
+        public string SendMail(string ToEmail, int NotesId, string collaborator)
         {
             string FromEmail = "raichurprabha1@gmail.com";
             MailMessage message = new MailMessage(FromEmail, ToEmail);
-            string MailBody = "Token for the reset password:" + Token;
-            message.Subject = "Token generated for resetting password";
+            string MailBody = "Hii! "+ToEmail+" You have collaboration with Notes :" +NotesId;
+            message.Subject = "Collaborated by person "+collaborator;
             message.Body = MailBody.ToString();
             message.BodyEncoding = Encoding.UTF8;
             message.IsBodyHtml = true;
