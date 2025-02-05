@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CommonLayer.Models;
+using Microsoft.AspNetCore.Http;
 using RepositoryLayer.Entity;
 
 namespace ManagerLayer.Interface
@@ -19,5 +20,10 @@ namespace ManagerLayer.Interface
         public bool IsPinOrUnpin(int UserId, int NotesId);
         public bool IsArchiveOrUnArchive(int UserId, int NotesId);
         public bool IsTrashOrUnTrash(int UserId, int NotesId);
+        public Notes DeleteForever(int UserId, int NotesId);
+        public Notes SetRemainder(int userId, int notesId, DateTime reminderTime);
+        public Notes Color(int UserId, int NotesId, string color);
+
+        public string UploadImage(IFormFile ImagePath, int NotesId, int UserId);
     }
 }
